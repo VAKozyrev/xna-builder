@@ -1,0 +1,4 @@
+*.egg-info
+*.json
+__pycache__
+structures

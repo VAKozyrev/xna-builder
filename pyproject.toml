@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0", "versioningit~=2.0"]
+
+[project]
+name = "xna-builder"
+description = "Tool XNA structures generation and manipulation"
+version = "0.0.1"
+readme = "README.md"
+authors = [
+    { name = "Vladimir Kozyrev", email = "v.kozyrev@lboro.ac.uk" }
+]
+
+[project.scripts]
+build-xna = "xna_builder.build:main"
+
+[tool.setuptools.packages.find]
+include = ["xna_builder"]
