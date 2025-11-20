@@ -111,7 +111,7 @@ BLOCKS_DICT = {
         "bb_pdb": "RpFNA_backbone.pdb",
         "bb_link": [10, 1],
         "bb_base_link": [13, 14],
-    }
+    },
 }
 
 RESNAMES_DICT = {
