@@ -94,8 +94,6 @@ RuntimeParameters:
   num_steps: 1000000000
   num_candidates: 1
   weighting_temperature: 300
-  seed: 0
-  strand: GCATTCA
   strand_orientation:
   - true
   - false

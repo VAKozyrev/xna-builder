@@ -1,3 +1,8 @@
+from pathlib import Path
+from itertools import product
+
+from openbabel import openbabel as ob
+
 def get_chirality_label(seq_linker: str) -> str:
 
     new_linker = "p" + seq_linker[1:].lower()  # First doesn't count
@@ -44,6 +49,20 @@ def get_diastereomers(config: dict) -> list[tuple[str, str, str]]:
             diastereomers.append((seq_base, seq_sugar, "".join(new_linker)))
 
     return diastereomers
+
+
+def renumber_atoms(pdb_in: Path, pdb_out: Path) -> None:
+
+    mol = ob.OBMol()
+    conv = ob.OBConversion()
+
+    conv.ReadFile(mol, str(pdb_in))
+    residues = sorted(ob.OBResidueIter(mol), key=lambda r: r.GetNum())
+    idxs = [atom.GetIdx() for res in residues for atom in ob.OBResidueAtomIter(res)]
+
+    mol.RenumberAtoms(idxs)
+
+    conv.WriteFile(mol, str(pdb_out))
 
 
 def remove_p5(olig: ob.OBMol) -> ob.OBMol:
